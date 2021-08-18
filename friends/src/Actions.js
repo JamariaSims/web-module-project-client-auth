@@ -7,18 +7,10 @@ export const SET_USER_FAIL = "SET_USER_FAIL";
 
 export const setCurrentUser = (userData) => (dispatch) => {
   dispatch({ type: SET_USER_START });
-  axios({
-    method: "post",
-    url: "http://localhost:5000/api/login",
-    data: { userData },
-    headers: {
-      authorization:
-        "esfeyJ1c2VySWQiOiJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA0NUIhkufemQifQ",
-    },
-  })
+  createNewUser(userData)
+    .post("http://localhost:5000/api/login", userData)
     .then((response) => {
-      console.log(response.data);
-      dispatch({ type: SET_USER_SUCCESS, payload: response.data });
+      dispatch({ type: SET_USER_SUCCESS, payload: response.data.payload });
     })
     .catch((error) => {
       console.log(error);
