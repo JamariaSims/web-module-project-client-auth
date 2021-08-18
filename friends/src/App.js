@@ -1,5 +1,8 @@
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import LoginForm from "./Components/LoginForm";
+
 function App() {
-  return <div className="App"></div>;
+  return <LoginForm />;
 }
 
 export default App;
